@@ -16,7 +16,7 @@ RUN --mount=type=cache,target=/var/cache/apt/ \
 WORKDIR /app/
 COPY hotspot-entrypoint.sh docker-healthcheck.sh /
 COPY --from=build /app/build/libs/piped-1.0-all.jar /app/piped.jar
-COPY config.properties /app/config.properties  # <-- CRITICAL: Copy custom config to runtime
+COPY config.properties /app/config.properties
 COPY VERSION .
 EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 CMD /docker-healthcheck.sh
